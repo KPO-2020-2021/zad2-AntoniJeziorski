@@ -31,5 +31,9 @@ struct WyrazenieZesp {
 
 void Wyswietl(WyrazenieZesp  WyrZ);
 LZespolona Oblicz(WyrazenieZesp  WyrZ);
+LZespolona Sprzezenie(LZespolona);
+double Modul2(LZespolona);
+LZespolona Wprowadz(LZespolona a);
+WyrazenieZesp Wprowadz(WyrazenieZesp x);
 
 #endif
