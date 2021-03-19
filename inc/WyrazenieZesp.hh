@@ -1,8 +1,9 @@
 #ifndef WYRAZENIEZESP_HH
 #define WYRAZENIEZESP_HH
+#include <iostream>
+#include <cmath>
 
-
-
+#include <iomanip>
 #include "LZespolona.hh"
 
 
@@ -35,5 +36,8 @@ LZespolona Sprzezenie(LZespolona);
 double Modul2(LZespolona);
 LZespolona Wprowadz(LZespolona a);
 WyrazenieZesp Wprowadz(WyrazenieZesp x);
-
+istream & operator >> (istream & StrmWe, Operator & WczytSym);
+ostream & operator << (ostream & StrmWy, Operator wop);
+ostream & operator << (ostream & StrmWy, WyrazenieZesp WyrZ);
+istream & operator >> (istream & StrmWe, WyrazenieZesp & WyrZ);
 #endif

@@ -1,6 +1,5 @@
 #include "WyrazenieZesp.hh"
-#include <iostream>
-#include <cmath>
+#include <cstring>
 using namespace std;
 
 /*
@@ -177,4 +176,43 @@ WyrazenieZesp Wprowadz(WyrazenieZesp x)
     x.Arg1 = a;
     x.Arg2 = b;
     return x;
+}
+
+
+ostream & operator << (ostream & StrmWy, Operator wop)
+{
+    const char znakop[] = "+-*/";
+    return StrmWy << znakop[wop];
+}
+
+ostream & operator << (ostream & StrmWy, WyrazenieZesp WyrZ)
+{
+    return StrmWy << WyrZ.Arg1 << " " << WyrZ.Op << " " << WyrZ.Arg2;
+}
+
+
+istream & operator >> (istream & StrmWe, Operator & WczytSym)
+{
+    Operator TabTypOp[] = { Op_Dodaj, Op_Odejmij, Op_Mnoz, Op_Dziel };
+    const char TabSymOp[] = "+-*/", *wSymOp;
+    wSymOp = TabSymOp;
+    char CzytSymOp='x';
+
+    StrmWe >> CzytSymOp;
+
+    if((wSymOp= strchr(wSymOp,CzytSymOp)) == nullptr)
+    {
+        StrmWe.setstate(ios::failbit);
+    }
+    else
+    {
+        WczytSym = TabTypOp[wSymOp-TabSymOp];
+    }
+    return StrmWe;
+}
+
+istream & operator >> (istream & StrmWe, WyrazenieZesp & WyrZ)
+{
+    StrmWe >> WyrZ.Arg1 >> WyrZ.Op >> WyrZ.Arg2;
+    return StrmWe;
 }

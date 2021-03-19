@@ -13,6 +13,9 @@ struct Statystyka
     int poprawne, bledne;
 };
 
+/*!
+ * Funkcja wyswietlajaca wyniki statysytki
+ */
 void Wyswietlwynik(Statystyka wynik);
 
 
