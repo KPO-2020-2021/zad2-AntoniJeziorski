@@ -32,97 +32,102 @@ int main(int argc, char **argv)
   cout << endl;
 
   WyrazenieZesp   WyrZ_PytanieTestowe;
-  int licznik = 1;
-  Statystyka ocena = {0, 0};
+  int licznik = 1; // licznik pytan
+  Statystyka ocena = {0, 0}; // inicjacja strunktury statystyki
   while (PobierzNastpnePytanie(&BazaT,&WyrZ_PytanieTestowe)) 
   {
-    LZespolona wynik, odpowiedz;
+    LZespolona wynik, odpowiedz; // zmienna wynik z policzonym wyrazeniem oraz zmienna odpowiedz do podawania odpowiedzi
     cout << "Zadanie " << licznik << ": ";
-    Wyswietl(WyrZ_PytanieTestowe);
-    wynik = Oblicz(WyrZ_PytanieTestowe);
+    cout << WyrZ_PytanieTestowe;
+    wynik = Oblicz(WyrZ_PytanieTestowe); // obliczenie wyrazenia
     cin.clear();
     cin >> odpowiedz;
-    if(cin.fail())
+    if(cin.fail()) // jesli wystapil blad przy wczytywaniu
     {
-      cin.clear();
+      cin.clear(); // odpowiedz jeszcze raz
       cin.ignore(10000, '\n');
       cout << "Blad wczytywania. Podaj wynik jeszcze raz:" << endl;
       cin >> odpowiedz;
-      if(cin.fail())
+      if(cin.fail()) // jesli znow blad
       {
-        cin.clear();
+        cin.clear(); // odpowiedz ostatni raz
         cin.ignore(10000, '\n');
         cout << "Blad wczytywania. Ostatnia szansa:" << endl;
         cin >> odpowiedz;
-        if(cin.fail())
+        if(cin.fail()) // jesli blad
         {
           cin.ignore(10000, '\n');
           cout << "Bledna odpowiedz" << endl;
           cout << "Wynik poprawny: " << wynik << endl;
-          ocena.bledne += 1;
-          licznik ++;
-          continue;
+          ocena.bledne += 1; // dodaj 1 do blednych odpowiedzi
+          licznik ++; // zwieksz licznik pytan
+          continue; // przejdz do kolejnego pytania
         }
       }
     }
-    if(wynik == odpowiedz)
+    if(wynik == odpowiedz) // jesli prawda
     {
       cout << "Poprawna odpowiedz" << endl;
-      ocena.poprawne += 1;
+      ocena.poprawne += 1; // dodaj 1 do poprawnych odpowiedzi
     }
-    else
+    else // jesli nie
     {
       cout << "Bledna odpowiedz" << endl;
       cout << "Wynik poprawny: " << wynik << endl;
-      ocena.bledne += 1;
+      ocena.bledne += 1; // dodaj 1 do blednych odpowiedzi
     }
-    
-    licznik++;
+    licznik++; // zwieksz licznik pytan
   }
   Wyswietlwynik(ocena);
 
   /* TESTY FUNKCJI TYDZIEN 0, 1 */
-
+  cout << endl << endl << "TESTY" << endl << endl;
+  cin.clear();
+  cin.ignore(10000, '\n');
   LZespolona x = {1,2}, y = {8,-9}, z;
   WyrazenieZesp w;
   double m;
   // test wprowadzania liczby zespolonej oraz jej wyswietlania
-  //cin >> z;
-  //cout << z;
+  cout << "Podaj liczbe zespolona:" << endl;
+  cin >> z;
+  cout << z << endl;
 
   // test prowadznia oraz wyswietlania wyrazenia zespolonego
-  //cin >> w;
-  // cout << w;
+  cout << "Podaj wyrazenie zespolone:"  << endl;
+  cin >> w;
+  cout << w << endl;
 
   // test obliczania wyrazenia zespolonego
-  //w = {x, Op_Dodaj, y};
-  //z = Oblicz(w);
-  //cout << z;
-  //cout << endl;
-  //w = {x, Op_Odejmij, y};
-  //z = Oblicz(w);
-  //cout << z;
-  //cout << endl;
-  //w = {x, Op_Mnoz, y};
-  //z = Oblicz(w);
-  //cout << z;
-  //cout << endl;
-  //w = {x, Op_Dziel, y};
-  //z = Oblicz(w);
-  //cout << z;
-  //cout << endl;
+  w = {x, Op_Dodaj, y};
+  z = Oblicz(w);
+  cout << "dodawanie: spodzniewana wartosc to (9-7i) -------" << z;
+  cout << endl;
+  w = {x, Op_Odejmij, y};
+  z = Oblicz(w);
+  cout << "odejmowanie: spodziewana wartosc to (-7+11i) ------" << z;
+  cout << endl;
+  w = {x, Op_Mnoz, y};
+  z = Oblicz(w);
+  cout << "mnozenie: spodziewana wartosc to (26+7i) -------" << z;
+  cout << endl;
+  w = {x, Op_Dziel, y};
+  z = Oblicz(w);
+  cout << "dzielenie: spodziewana wartosc to (-0.0689655+0.172414i) -----" << z;
+  cout << endl;
 
-  // test dzielenia przez 0
-  //z = x/0;
+  // test dzielenia przez skalar
+  z = x/0.5;
+  cout << "dzielenie przez skalar: spodziewana wartosc to (2+4i) -----" << z;
+  cout << endl;
+  //test obliczania modulu
+  m = Modul2(x);
+  cout << "moudl l. zesp.: spodziewana wartosc to 2.23607 -------" << m;
+cout << endl;
+  //test sprzezenia liczby zespolonej
+  z = Sprzezenie(x);
+  cout << "sprzerzenie l. zesp.: spodziewana wartosc to (1-2i) ------" << z;
 
-  // test obliczania modulu
-  //m = Modul2(x);
-  //cout << m;
-
-  // test sprzezenia liczby zespolonej
-  //z = Sprzezenie(x);
-  //cout << z;
-
+  //wyniki sa poprawne, zostaly sprawdzone kalkulatorem wolfram alpha
 
 
 }
