@@ -88,9 +88,16 @@ int main(int argc, char **argv)
   WyrazenieZesp w;
   double m;
   // test wprowadzania liczby zespolonej oraz jej wyswietlania
-  cout << "Podaj liczbe zespolona:" << endl;
+  cout << "Podaj liczbe zespolona :" << endl;
   cin >> z;
-  cout << z << endl;
+  if(cin.fail())
+  {
+    cin.clear();
+    cin.ignore(10000, '\n');
+    cout << "blad formatu" << endl;
+  }
+  else
+    cout << z << endl;
 
   // test prowadznia oraz wyswietlania wyrazenia zespolonego
   cout << "Podaj wyrazenie zespolone:"  << endl;
