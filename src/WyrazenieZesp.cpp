@@ -96,24 +96,24 @@ double LZespolona::Modul2() const
  * Funkcja zwraza wartosc wyrazenia zespolonego
  */
 
-LZespolona Oblicz(WyrazenieZesp  WyrZ)
+LZespolona WyrazenieZesp::Oblicz() const
 {
     LZespolona wynik;
-    if(WyrZ.Op == 0) //jesli +
+    if(this->Op == 0) //jesli +
     {
-        wynik = WyrZ.Arg1 + WyrZ.Arg2; // wykonaj dodawanie
+        wynik = this->Arg1 + this->Arg2; // wykonaj dodawanie
     }
-    else if(WyrZ.Op == 1) //jesli -
+    else if(this->Op == 1) //jesli -
     {
-        wynik = WyrZ.Arg1 - WyrZ.Arg2; //wykonaj odejmowanie
+        wynik = this->Arg1 - this->Arg2; //wykonaj odejmowanie
     }
-    else if(WyrZ.Op == 2) //jesli *
+    else if(this->Op == 2) //jesli *
     {
-        wynik = WyrZ.Arg1 * WyrZ.Arg2; //wykonaj mnozenie
+        wynik = this->Arg1 * this->Arg2; //wykonaj mnozenie
     }
-    else if(WyrZ.Op == 3) //jesli /
+    else if(this->Op == 3) //jesli /
     {
-        wynik = WyrZ.Arg1 / WyrZ.Arg2; //wykonaj dzielenie
+        wynik = this->Arg1 / this->Arg2; //wykonaj dzielenie
     }
     return wynik; //zwroc wynik
 }

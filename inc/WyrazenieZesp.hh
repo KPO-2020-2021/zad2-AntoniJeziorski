@@ -21,6 +21,7 @@ struct WyrazenieZesp {
   LZespolona   Arg1;   // Pierwszy argument wyrazenia arytmetycznego
   Operator     Op;     // Opertor wyrazenia arytmetycznego
   LZespolona   Arg2;   // Drugi argument wyrazenia arytmetycznego
+  LZespolona Oblicz() const;
 };
 
 
@@ -31,7 +32,7 @@ struct WyrazenieZesp {
 
 
 void Wyswietl(WyrazenieZesp  WyrZ);
-LZespolona Oblicz(WyrazenieZesp  WyrZ);
+//LZespolona Oblicz(WyrazenieZesp  WyrZ);
 //LZespolona Sprzezenie(LZespolona);
 //double Modul2(LZespolona);
 LZespolona Wprowadz(LZespolona a);

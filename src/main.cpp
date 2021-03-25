@@ -34,12 +34,12 @@ int main(int argc, char **argv)
   WyrazenieZesp   WyrZ_PytanieTestowe;
   int licznik = 1; // licznik pytan
   Statystyka ocena = {0, 0}; // inicjacja strunktury statystyki
-  /*while (PobierzNastpnePytanie(&BazaT,&WyrZ_PytanieTestowe)) 
+  while (PobierzNastpnePytanie(&BazaT,&WyrZ_PytanieTestowe)) 
   {
     LZespolona wynik, odpowiedz; // zmienna wynik z policzonym wyrazeniem oraz zmienna odpowiedz do podawania odpowiedzi
     cout << "Zadanie " << licznik << ": ";
     cout << WyrZ_PytanieTestowe;
-    wynik = Oblicz(WyrZ_PytanieTestowe); // obliczenie wyrazenia
+    wynik = WyrZ_PytanieTestowe.Oblicz(); // obliczenie wyrazenia
     cin.clear();
     cin >> odpowiedz;
     if(cin.fail()) // jesli wystapil blad przy wczytywaniu
@@ -78,13 +78,11 @@ int main(int argc, char **argv)
     }
     licznik++; // zwieksz licznik pytan
   }
-  Wyswietlwynik(ocena);*/
+  Wyswietlwynik(ocena);
 
 
 
-  LZespolona x = {2,-2}, y = {7,3}, z;
-  z = x / y;
-  cout << z << endl;
+  
   /* TESTY FUNKCJI TYDZIEN 0, 1 
   cout << endl << endl << "TESTY" << endl << endl;
   cin.clear();
