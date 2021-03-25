@@ -34,7 +34,7 @@ int main(int argc, char **argv)
   WyrazenieZesp   WyrZ_PytanieTestowe;
   int licznik = 1; // licznik pytan
   Statystyka ocena = {0, 0}; // inicjacja strunktury statystyki
-  while (PobierzNastpnePytanie(&BazaT,&WyrZ_PytanieTestowe)) 
+  /*while (PobierzNastpnePytanie(&BazaT,&WyrZ_PytanieTestowe)) 
   {
     LZespolona wynik, odpowiedz; // zmienna wynik z policzonym wyrazeniem oraz zmienna odpowiedz do podawania odpowiedzi
     cout << "Zadanie " << licznik << ": ";
@@ -78,9 +78,14 @@ int main(int argc, char **argv)
     }
     licznik++; // zwieksz licznik pytan
   }
-  Wyswietlwynik(ocena);
+  Wyswietlwynik(ocena);*/
 
-  /* TESTY FUNKCJI TYDZIEN 0, 1 */
+
+
+  LZespolona x = {2,-2}, y = {7,3}, z;
+  z = x / y;
+  cout << z << endl;
+  /* TESTY FUNKCJI TYDZIEN 0, 1 
   cout << endl << endl << "TESTY" << endl << endl;
   cin.clear();
   cin.ignore(10000, '\n');
@@ -136,5 +141,5 @@ cout << endl;
 
   //wyniki sa poprawne, zostaly sprawdzone kalkulatorem wolfram alpha
 
-
+*/
 }

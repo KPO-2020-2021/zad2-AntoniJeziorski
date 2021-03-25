@@ -21,27 +21,27 @@ void Wyswietl(WyrazenieZesp  WyrZ)
 {
     if(WyrZ.Op == 0) //jesli dodawajnie
     {
-        Wyswietl(WyrZ.Arg1);
+        cout << WyrZ.Arg1;
         cout<<" + "; //wyswietl +
-        Wyswietl(WyrZ.Arg2);
+        cout << WyrZ.Arg2;
     }
     else if(WyrZ.Op == 1) //jesli odejmowanie
     {
-        Wyswietl(WyrZ.Arg1);
+        cout << WyrZ.Arg1;
         cout<<" - "; //wyswietl -
-        Wyswietl(WyrZ.Arg2);
+        cout << WyrZ.Arg2;
     }
     else if(WyrZ.Op == 2) //jesli mnoezenie
     {
-        Wyswietl(WyrZ.Arg1);
+        cout << WyrZ.Arg1;
         cout<<" * "; //wyswietl *
-        Wyswietl(WyrZ.Arg2);
+        cout << WyrZ.Arg2;
     }
     else if(WyrZ.Op == 3) //jesli dzielenie
     {
-        Wyswietl(WyrZ.Arg1);
+        cout << WyrZ.Arg1;
         cout<<" / "; //wyswietl /
-        Wyswietl(WyrZ.Arg2);
+        cout << WyrZ.Arg2;
     }
     cout << endl;
 }
@@ -55,10 +55,10 @@ void Wyswietl(WyrazenieZesp  WyrZ)
  * Wyswietlenie liczby zespolonej
  */
 
-void Wyswietl(LZespolona a)
+/*void Wyswietl(LZespolona a)
 {
     cout << "(" << a.re << showpos << a.im << noshowpos << "i)";
-}
+}*/
 
 /*!
  * Funkcja obliczajaca sprzezenie liczby zespolonej
@@ -70,11 +70,6 @@ void Wyswietl(LZespolona a)
  */
 
 
-LZespolona Sprzezenie(LZespolona a)
-{
-  a.im = -a.im;
-  return a;
-}
 
 /*!
  * Funkcja obliczajaca modul liczby zespolonej
@@ -85,10 +80,10 @@ LZespolona Sprzezenie(LZespolona a)
  * Funkcja zwraza modul liczby zespolonej
  */
 
-double Modul2(LZespolona a)
+double LZespolona::Modul2() const
 {
   double m;
-  m = sqrt((a.re * a.re) + (a.im * a.im));
+  m = sqrt((this->re * this->re) + (this->im * this->im));
   return m;
 }
 
@@ -215,4 +210,9 @@ istream & operator >> (istream & StrmWe, WyrazenieZesp & WyrZ)
 {
     StrmWe >> WyrZ.Arg1 >> WyrZ.Op >> WyrZ.Arg2;
     return StrmWe;
+}
+
+void LZespolona::Sprzezenie()
+{
+    this->im = -this->im; 
 }
