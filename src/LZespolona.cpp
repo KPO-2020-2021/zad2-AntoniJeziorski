@@ -56,18 +56,17 @@ LZespolona  LZespolona::operator * (LZespolona  Skl2) const
 LZespolona  LZespolona::operator / (double  Skl2) const
 {
   LZespolona Wynik;
-  if(Skl2 != 0)
-  {
-    Wynik.re = this->re/Skl2;
-    Wynik.im = this->im/Skl2;
-    return Wynik;
-  }
-  else
+  if(Skl2 == 0)
   {
     cerr<<"Dzielnie przez 0 - blad"<<endl;
     exit(1);
   }
-  
+  else
+  {
+    Wynik.re = this->re/Skl2;
+    Wynik.im = this->im/Skl2;
+  }
+  return Wynik;
 }
 /*!
  * Realizuje dzielenie dwoch liczb zespolonych.
@@ -86,8 +85,10 @@ LZespolona  LZespolona::operator / (LZespolona  Skl2) const
     exit(1);
   }
   else
+  {
     Skl2.Sprzezenie();
     Wynik = (*this * Skl2) / (Skl2.Modul2() * Skl2.Modul2());
+  }
   return Wynik;
 
 }

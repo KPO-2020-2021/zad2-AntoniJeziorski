@@ -33,7 +33,8 @@ int main(int argc, char **argv)
 
   WyrazenieZesp   WyrZ_PytanieTestowe;
   int licznik = 1; // licznik pytan
-  Statystyka ocena = {0, 0}; // inicjacja strunktury statystyki
+  Statystyka ocena;
+  ocena.Inicjalizuj(); // inicjacja strunktury statystyki
   while (PobierzNastpnePytanie(&BazaT,&WyrZ_PytanieTestowe)) 
   {
     LZespolona wynik, odpowiedz; // zmienna wynik z policzonym wyrazeniem oraz zmienna odpowiedz do podawania odpowiedzi
@@ -59,7 +60,7 @@ int main(int argc, char **argv)
           cin.ignore(10000, '\n');
           cout << "Bledna odpowiedz" << endl;
           cout << "Wynik poprawny: " << wynik << endl;
-          ocena.bledne += 1; // dodaj 1 do blednych odpowiedzi
+          ocena.Dodaj_bledne(); // dodaj 1 do blednych odpowiedzi
           licznik ++; // zwieksz licznik pytan
           continue; // przejdz do kolejnego pytania
         }
@@ -68,20 +69,26 @@ int main(int argc, char **argv)
     if(wynik == odpowiedz) // jesli prawda
     {
       cout << "Poprawna odpowiedz" << endl;
-      ocena.poprawne += 1; // dodaj 1 do poprawnych odpowiedzi
+      ocena.Dodaj_poprawne(); // dodaj 1 do poprawnych odpowiedzi
     }
     else // jesli nie
     {
       cout << "Bledna odpowiedz" << endl;
       cout << "Wynik poprawny: " << wynik << endl;
-      ocena.bledne += 1; // dodaj 1 do blednych odpowiedzi
+      ocena.Dodaj_bledne(); // dodaj 1 do blednych odpowiedzi
     }
     licznik++; // zwieksz licznik pytan
   }
-  Wyswietlwynik(ocena);
+  cout << ocena;
 
 
-
+/*Statystyka x;
+x.Inicjalizuj();
+x.Dodaj_poprawne();
+cout << x;
+x.Dodaj_bledne();
+x.Dodaj_bledne();
+cout << endl << x;*/
   
   /* TESTY FUNKCJI TYDZIEN 0, 1 
   cout << endl << endl << "TESTY" << endl << endl;

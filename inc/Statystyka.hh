@@ -11,12 +11,17 @@ using namespace std;
 struct Statystyka
 {
     int poprawne, bledne;
+    void Dodaj_poprawne();
+    void Dodaj_bledne();
+    void Inicjalizuj();
+
 };
 
 /*!
  * Funkcja wyswietlajaca wyniki statysytki
  */
-void Wyswietlwynik(Statystyka wynik);
+//void Wyswietlwynik(Statystyka wynik);
+ostream & operator << (ostream & StrmWy, Statystyka wynik);
 
 
 

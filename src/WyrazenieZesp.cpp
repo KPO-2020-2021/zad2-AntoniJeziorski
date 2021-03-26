@@ -182,7 +182,7 @@ ostream & operator << (ostream & StrmWy, Operator wop)
 
 ostream & operator << (ostream & StrmWy, WyrazenieZesp WyrZ)
 {
-    return StrmWy << WyrZ.Arg1 << " " << WyrZ.Op << " " << WyrZ.Arg2;
+    return StrmWy << WyrZ.Arg1 << " " << WyrZ.Op << " " << WyrZ.Arg2 << endl;
 }
 
 
@@ -214,5 +214,6 @@ istream & operator >> (istream & StrmWe, WyrazenieZesp & WyrZ)
 
 void LZespolona::Sprzezenie()
 {
-    this->im = -this->im; 
+    if(this->im != 0)
+        this->im = -this->im; 
 }
