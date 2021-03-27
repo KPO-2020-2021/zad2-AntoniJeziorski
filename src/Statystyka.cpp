@@ -18,9 +18,7 @@
 
 ostream & operator << (ostream & StrmWy, Statystyka wynik)
 {
-    cout << "Poprawne odpowiedzi: " << wynik.poprawne << endl;
-    cout << "Bledne odpowiedzi: " << wynik.bledne << endl;
-    cout << "Wynik procentowy: " << (double(wynik.poprawne) / (wynik.poprawne + wynik.bledne)) * 100 << "%" << endl;
+    StrmWy << "Poprawne odpowiedzi: " << wynik.poprawne << "\nBledne odpowiedzi: " << wynik.bledne << "\nWynik procentowy: " << (double(wynik.poprawne) / (wynik.poprawne + wynik.bledne)) * 100 << "%\n";
     return StrmWy;
 }
 
@@ -39,3 +37,4 @@ void Statystyka::Dodaj_bledne()
 {
     this->bledne += 1;
 }
+

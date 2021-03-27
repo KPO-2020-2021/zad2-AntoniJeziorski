@@ -48,6 +48,6 @@ TEST_CASE("LZespolona - modul dla liczb zmiennoprzecinkowych")
     x.re = 6.34;
     x.im = 7.85;
 
-    CHECK(x.Modul2() >= 10.09-0.01);
+    CHECK((x.Modul2() >= 10.09-0.01 && x.Modul2() <= 10.09+0.01));
 }
 
