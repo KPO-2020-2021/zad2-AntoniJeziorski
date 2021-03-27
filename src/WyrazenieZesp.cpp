@@ -2,97 +2,11 @@
 #include <cstring>
 using namespace std;
 
-/*
- * Tu nalezy zdefiniowac funkcje, ktorych zapowiedzi znajduja sie
- * w pliku naglowkowym.
- */
-
-
-/*! 
- * Funkcja wyswiewtlajaca wyrazenie zespolone
- * PRE:
- * Args:
- *  -Wyrazenie Zesp
- * POST:
- * Funkcja wyswietla wyrazenie zespolone
- */
-
-void Wyswietl(WyrazenieZesp  WyrZ)
-{
-    if(WyrZ.Op == 0) //jesli dodawajnie
-    {
-        cout << WyrZ.Arg1;
-        cout<<" + "; //wyswietl +
-        cout << WyrZ.Arg2;
-    }
-    else if(WyrZ.Op == 1) //jesli odejmowanie
-    {
-        cout << WyrZ.Arg1;
-        cout<<" - "; //wyswietl -
-        cout << WyrZ.Arg2;
-    }
-    else if(WyrZ.Op == 2) //jesli mnoezenie
-    {
-        cout << WyrZ.Arg1;
-        cout<<" * "; //wyswietl *
-        cout << WyrZ.Arg2;
-    }
-    else if(WyrZ.Op == 3) //jesli dzielenie
-    {
-        cout << WyrZ.Arg1;
-        cout<<" / "; //wyswietl /
-        cout << WyrZ.Arg2;
-    }
-    cout << endl;
-}
-
 /*!
- * Funkcja wyswietlajaca liczbe zespolona
- * PRE:
- * Args:
- *  - LZespolona
- * POST: 
- * Wyswietlenie liczby zespolonej
+ * Oblicza wartosc wyrazenia zespolonego
  */
 
-/*void Wyswietl(LZespolona a)
-{
-    cout << "(" << a.re << showpos << a.im << noshowpos << "i)";
-}*/
-
-/*!
- * Funkcja obliczajaca sprzezenie liczby zespolonej
- * PRE:
- * Args:
- *  - LZespolona
- * POST:
- * Funkcja zwraca sprzezenie liczby zespolonej
- */
-
-
-
-/*!
- * Funkcja obliczajaca modul liczby zespolonej
- * PRE:
- * Args:
- *  - LZespolona
- * POST:
- * Funkcja zwraza modul liczby zespolonej
- */
-
-
-
-/*!
- * Funkcja obliczajaca wyrazenie zespolone
- * PRE:
- * Args:
- *  -WyrazenieZesp
- * POST:
- * Funkcja zwraza wartosc wyrazenia zespolonego
- */
-
-LZespolona WyrazenieZesp::Oblicz() const
-{
+LZespolona WyrazenieZesp::Oblicz() const 
     LZespolona wynik;
     if(this->Op == 0) //jesli +
     {
@@ -113,73 +27,34 @@ LZespolona WyrazenieZesp::Oblicz() const
     return wynik; //zwroc wynik
 }
 
+
+
 /*!
- * Funkcja sluzaca do wprowadzania liczby zespolonej
- * PRE:
- * Args:
- *  - LZespolona
- * POST:
- * Funkcja zwraca wprowadzona liczbe zespolona
+ * Realizuje wyswietlanie operatora arytmetycznego
  */
 
-LZespolona Wprowadz(LZespolona a)
-{
-    cout << "Podaj Re : \n";
-    cin >> a.re;
-    cout << "Podaj Im : \n";
-    cin >> a.im;
-    return a;
-}
-
-/*! Funkcja do wprowadzania wyrazenia zespolonego
- * PRE:
- * Args:
- *  - Wyrazenie zesp;
- * POST:
- * Funkcja zwraca wpisane wyrazenie zespolone
- */
-
-WyrazenieZesp Wprowadz(WyrazenieZesp x)
-{
-    LZespolona a, b;
-    cin >> a;
-    char znak;
-    cin >> znak;
-    if(znak == '+')
-    {
-        x.Op = Op_Dodaj;
-    }
-    if(znak == '-')
-    {
-        x.Op = Op_Odejmij;
-    }
-    if(znak == '*')
-    {
-        x.Op = Op_Mnoz;
-    }
-    if(znak == '/')
-    {
-        x.Op = Op_Dziel;
-    }
-    cout << endl;
-    cin >> b;
-    x.Arg1 = a;
-    x.Arg2 = b;
-    return x;
-}
-
-
-ostream & operator << (ostream & StrmWy, Operator wop)
+ostream & operator << (ostream & StrmWy, Operator wop) 
 {
     const char znakop[] = "+-*/";
     return StrmWy << znakop[wop];
 }
 
-ostream & operator << (ostream & StrmWy, WyrazenieZesp WyrZ)
+
+
+/*!
+ * Realizuje wyswietlanie wyrazenia zespolonego
+ */
+
+ostream & operator << (ostream & StrmWy, WyrazenieZesp WyrZ) // przeciazenie operatora dla wyswietlania wyrazenia zespolonego
 {
     return StrmWy << WyrZ.Arg1 << " " << WyrZ.Op << " " << WyrZ.Arg2 << endl;
 }
 
+
+
+/*!
+ * Realizuje wprowadzanie operatora arytmetycznego
+ */
 
 istream & operator >> (istream & StrmWe, Operator & WczytSym)
 {
@@ -188,18 +63,23 @@ istream & operator >> (istream & StrmWe, Operator & WczytSym)
     wSymOp = TabSymOp;
     char CzytSymOp='x';
 
-    StrmWe >> CzytSymOp;
+    StrmWe >> CzytSymOp; // wprowadz symbol
 
-    if((wSymOp= strchr(wSymOp,CzytSymOp)) == nullptr)
+    if((wSymOp= strchr(wSymOp,CzytSymOp)) == nullptr) // jesli znak niepoprawny
     {
-        StrmWe.setstate(ios::failbit);
+        StrmWe.setstate(ios::failbit); // ustaw flage fail
     }
     else
     {
-        WczytSym = TabTypOp[wSymOp-TabSymOp];
+        WczytSym = TabTypOp[wSymOp-TabSymOp]; // w przeciwnym wypadku podaj znak do strumienia
     }
     return StrmWe;
 }
+
+
+/*!
+ * Realizuje wprowadzanie wyrazenia zespolonego
+ */
 
 istream & operator >> (istream & StrmWe, WyrazenieZesp & WyrZ)
 {

@@ -1,28 +1,34 @@
 #include "LZespolona.hh"
 #include "WyrazenieZesp.hh"
 #define MIN_DIFF 0.01
+
+
+
 /*!
- * Realizuje dodanie dwoch liczb zespolonych.
+ * Realizuje operacje dodawania dwoch liczb zespolonych.
  * Argumenty:
- *    Skl1 - pierwszy skladnik dodawania,
  *    Skl2 - drugi skladnik dodawania.
  * Zwraca:
- *    Sume dwoch skladnikow przekazanych jako parametry.
+ *    Sume dwoch skladnikow, gdzie jednym jest liczba dla ktorej zostala wywolana metoda, a druga jest argumentem metody.
  */
-LZespolona  LZespolona::operator + (LZespolona  Skl2) const
+
+LZespolona  LZespolona::operator + (LZespolona  Skl2) const 
 {
   Skl2.re += this->re;
   Skl2.im += this->im;
   return Skl2;
 }
+
+
+
 /*!
- * Realizuje odejmowanie dwoch liczb zespolonych.
+ * Realizuje operacje odejmowania dwoch liczb zespolonych.
  * Argumenty:
- *    Skl1 - odjemna ,
  *    Skl2 - odjemnik.
  * Zwraca:
- *    Roznice dwoch liczb zespolonych przekazanych jako parametry.
+ *    Roznice dwoch liczb zespolonych gdzie: odjemna to liczba dla ktorej zostala wywolana metoda, a odjemnik to argument.
  */
+
 LZespolona  LZespolona::operator - (LZespolona  Skl2) const
 {
 
@@ -30,14 +36,17 @@ LZespolona  LZespolona::operator - (LZespolona  Skl2) const
   Skl2.im = this->im - Skl2.im;
   return Skl2;
 }
+
+
+
 /*!
- * Realizuje mnozenie dwoch liczb zespolonych.
+ * Realizuje operacje mnozenia dwoch liczb zespolonych.
  * Argumenty:
- *    Skl1 - pierwszy czynnik dodawania,
- *    Skl2 - drugi czynnik dodawania.
+ *    Skl2 - drugi czynnik
  * Zwraca:
- *    Iloczyn dwoch czynnikow przekazanych jako parametry.
+ *    Iloczyn dwoch czynnikow gdzie: pierwszy do liczba dla ktorej zostala wywolana metoda, a drugi to parametr
  */
+
 LZespolona  LZespolona::operator * (LZespolona  Skl2) const
 {
   LZespolona Wynik;
@@ -45,20 +54,23 @@ LZespolona  LZespolona::operator * (LZespolona  Skl2) const
   Wynik.im = (this->re * Skl2.im) + (this->im * Skl2.re);
   return Wynik;
 }
+
+
+
 /*!
  * Realizuje dzielenie liczby zespolonej przez liczbe rzeczywista.
  * Argumenty:
- *    Skl1 - dzielna,
  *    Skl2 - dzielnik.
  * Zwraca:
- *    Iloraz liczby zespolonej oraz liczby rzeczywistej przekazanych jako parametry.
+ *    Iloraz liczby zespolonej oraz liczby rzeczywistej gdzie: dzielna to LZespolona dla ktorej zostala wywolana metoda, a dzielnik to argument
  */
+
 LZespolona  LZespolona::operator / (double  Skl2) const
 {
   LZespolona Wynik;
-  if(Skl2 == 0)
+  if(Skl2 == 0) // jesli dzielnik to 0
   {
-    throw runtime_error("Dzielnie przez 0");
+    throw runtime_error("Dzielnie przez 0"); // wyrzuc blad
   }
   else
   {
@@ -67,14 +79,17 @@ LZespolona  LZespolona::operator / (double  Skl2) const
   }
   return Wynik;
 }
+
+
+
 /*!
  * Realizuje dzielenie dwoch liczb zespolonych.
  * Argumenty:
- *    Skl1 - dzielna,
  *    Skl2 - dzielnik.
  * Zwraca:
- *    Iloraz dwoch liczb zespolonych przekazanych jako parametry.
+ *    Iloraz dwoch liczb zespolonych gdzie: dzielna to liczba dla ktorej zostala wywolana metoda, a dzielnik to argument
  */
+
 LZespolona  LZespolona::operator / (LZespolona  Skl2) const
 {
   LZespolona Wynik;
@@ -90,66 +105,92 @@ LZespolona  LZespolona::operator / (LZespolona  Skl2) const
   return Wynik;
 
 }
+
+
+
 /*!
  * Realizuje wyswietlenie liczby zespolonej podanej jako parametr
  */
+
 ostream & operator << ( ostream & StrmWy, LZespolona Lz )
 {
   StrmWy.precision(2);
   return StrmWy << '(' << std::fixed << Lz.re << showpos << Lz.im << noshowpos << 'i' << ')';
 }
+
+
+
 /*!
  * Realizuje wczytywanie liczby zespolonej podanej jako parametr
  */
+
 istream & operator >> ( istream & StrmWe, LZespolona& Lz )
 {
   char i, naw;
-  StrmWe >> naw;
+  StrmWe >> naw; // wprowadz znak
   if(StrmWe.fail())
     return StrmWe;
-  if(naw != '(')
+  if(naw != '(') // jesli nie jest nawiasem
   {
-    StrmWe.setstate(ios::failbit);
+    StrmWe.setstate(ios::failbit); // ustaw flage fail
     return StrmWe;
   }
-  StrmWe >> Lz.re;
+  StrmWe >> Lz.re; // wprowadz czesc rzeczywista
   if(StrmWe.fail())
     return StrmWe;
-  StrmWe >> Lz.im;
+  StrmWe >> Lz.im; // wprowadz czesc urojona
   if(StrmWe.fail())
     return StrmWe;
-  StrmWe >> i;
+  StrmWe >> i; // wprowadz znak
   if(StrmWe.fail())
     return StrmWe;
-  if(i != 'i')
+  if(i != 'i') // jesli nie jest i
   {
-    StrmWe.setstate(ios::failbit);
+    StrmWe.setstate(ios::failbit); // ustaw flage fail
     return StrmWe;
   }
-  StrmWe >> naw;
+  StrmWe >> naw; // wprowadz znak
   if(StrmWe.fail())
     return StrmWe;
-  if(naw != ')')
+  if(naw != ')') // jesli nie jest to nawias
   {
-    StrmWe.setstate(ios::failbit);
+    StrmWe.setstate(ios::failbit); // ustaw flage fail
     return StrmWe;
   }
   return StrmWe;
 }
 
+
+
+/*!
+ * Realizuje porownanie dwoch liczb zespolonych w granicach bledu MIN_DIFF 0.01
+ */
+
 bool LZespolona::operator == (LZespolona Skl2) const
 {
-  if((this->re >= Skl2.re - MIN_DIFF)&&(this->re <= Skl2.re + MIN_DIFF)&&(this->im >= Skl2.im - MIN_DIFF)&&(this->im <= Skl2.im + MIN_DIFF))
-    return true;
+  if((this->re >= Skl2.re - MIN_DIFF)&&(this->re <= Skl2.re + MIN_DIFF)&&(this->im >= Skl2.im - MIN_DIFF)&&(this->im <= Skl2.im + MIN_DIFF)) // sprawdzenie czy liczba zespolona miesci sie w danym przedziale
+    return true; // jesli tak zwroc prawde
   else 
     return false;
 }
 
+
+
+/*!
+ * Realizuje operacje sprzezenia liczby zespolonej
+ */
+
 void LZespolona::Sprzezenie()
 {
-    if(this->im != 0)
-        this->im = -this->im; 
+    if(this->im != 0) // jesli czesc urojona nie jest zerem
+        this->im = -this->im; //zmien jej znak
 }
+
+
+
+/*!
+ * Realizuje operacje wyliczenia modulu liczby zespolonej
+ */
 
 double LZespolona::Modul2() const
 {

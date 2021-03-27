@@ -1,20 +1,8 @@
 #include "Statystyka.hh"
 
 /*!
- * Funkcja wyswietlajaca wynik testu
- * PRE :
- * Wyniki blednych oraz poprawnych odpowiedzi
- * POST :
- * Funkcja wyswietla ilosc poprawnych oraz blednych odpowiedzi wraz z wynikiem procentowym
+ * Realizuje wyswietlanie modulu statystyki
  */
-
-
-/*void Wyswietlwynik(Statystyka wynik)
-{
-    cout << "Poprawne odpowiedzi: " << wynik.poprawne << endl;
-    cout << "Bledne odpowiedzi: " << wynik.bledne << endl;
-    cout << "Wynik procentowy: " << (double(wynik.poprawne) / (wynik.poprawne + wynik.bledne)) * 100 << "%" << endl;
-}*/
 
 ostream & operator << (ostream & StrmWy, Statystyka wynik)
 {
@@ -22,16 +10,28 @@ ostream & operator << (ostream & StrmWy, Statystyka wynik)
     return StrmWy;
 }
 
-void Statystyka::Inicjalizuj()
+/*!
+ * Inicjalizuje modul statystyki przypisujac zmiennym wartosc 0
+ */
+
+void Statystyka::Inicjalizuj() 
 {
     this->poprawne = 0;
     this->bledne = 0;
 }
 
+/*!
+ * Dodaje 1 kiedy uzytkownik poda poprawna odpowiedz
+ */
+
 void Statystyka::Dodaj_poprawne()
 {
     this->poprawne += 1;
 }
+
+/*!
+ * Dodaje 1 kiedy uzytkownik poda zla odpowiedz
+ */
 
 void Statystyka::Dodaj_bledne()
 {

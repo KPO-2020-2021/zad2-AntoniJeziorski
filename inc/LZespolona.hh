@@ -18,6 +18,7 @@ using namespace std;
 struct  LZespolona {
   double   re;    /*! Pole repezentuje czesc rzeczywista. */
   double   im;    /*! Pole repezentuje czesc urojona. */
+
   LZespolona operator + (LZespolona Skl2) const;
   LZespolona operator - (LZespolona Skl2) const;
   LZespolona operator * (LZespolona  Skl2) const;
@@ -27,20 +28,10 @@ struct  LZespolona {
   void Sprzezenie();
   double Modul2() const;
 };
-void Wyswietl(LZespolona a);
-
-/*
- * Dalej powinny pojawic sie zapowiedzi definicji przeciazen operatorow
- */
 
 
-//LZespolona  operator + (LZespolona  Skl1,  LZespolona  Skl2);
-//LZespolona  operator - (LZespolona  Skl1,  LZespolona  Skl2);
-//LZespolona  operator * (LZespolona  Skl1,  LZespolona  Skl2);
-//LZespolona  operator / (LZespolona  Skl1,  LZespolona  Skl2);
-//LZespolona  operator / (LZespolona  Skl1,  double  Skl2);
 ostream & operator << ( ostream & StrmWe, LZespolona Lz );
 istream & operator >> ( istream & StrmWe, LZespolona& Lz );
-//bool operator == (LZespolona Skl1, LZespolona Skl2);
+
 
 #endif

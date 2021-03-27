@@ -6,8 +6,6 @@
 using namespace std;
 
 
-
-
 int main(int argc, char **argv)
 {
 
@@ -93,69 +91,5 @@ int main(int argc, char **argv)
   cout << ocena;
 
 
-/*Statystyka x;
-x.Inicjalizuj();
-x.Dodaj_poprawne();
-cout << x;
-x.Dodaj_bledne();
-x.Dodaj_bledne();
-cout << endl << x;*/
-  
-  /* TESTY FUNKCJI TYDZIEN 0, 1 
-  cout << endl << endl << "TESTY" << endl << endl;
-  cin.clear();
-  cin.ignore(10000, '\n');
-  LZespolona x = {1,2}, y = {8,-9}, z;
-  WyrazenieZesp w;
-  double m;
-  // test wprowadzania liczby zespolonej oraz jej wyswietlania
-  cout << "Podaj liczbe zespolona :" << endl;
-  cin >> z;
-  if(cin.fail())
-  {
-    cin.clear();
-    cin.ignore(10000, '\n');
-    cout << "blad formatu" << endl;
-  }
-  else
-    cout << z << endl;
-
-  // test prowadznia oraz wyswietlania wyrazenia zespolonego
-  cout << "Podaj wyrazenie zespolone:"  << endl;
-  cin >> w;
-  cout << w << endl;
-
-  // test obliczania wyrazenia zespolonego
-  w = {x, Op_Dodaj, y};
-  z = Oblicz(w);
-  cout << "dodawanie: spodzniewana wartosc to (9-7i) -------" << z;
-  cout << endl;
-  w = {x, Op_Odejmij, y};
-  z = Oblicz(w);
-  cout << "odejmowanie: spodziewana wartosc to (-7+11i) ------" << z;
-  cout << endl;
-  w = {x, Op_Mnoz, y};
-  z = Oblicz(w);
-  cout << "mnozenie: spodziewana wartosc to (26+7i) -------" << z;
-  cout << endl;
-  w = {x, Op_Dziel, y};
-  z = Oblicz(w);
-  cout << "dzielenie: spodziewana wartosc to (-0.0689655+0.172414i) -----" << z;
-  cout << endl;
-
-  // test dzielenia przez skalar
-  z = x/0.5;
-  cout << "dzielenie przez skalar: spodziewana wartosc to (2+4i) -----" << z;
-  cout << endl;
-  //test obliczania modulu
-  m = Modul2(x);
-  cout << "moudl l. zesp.: spodziewana wartosc to 2.23607 -------" << m;
-cout << endl;
-  //test sprzezenia liczby zespolonej
-  z = Sprzezenie(x);
-  cout << "sprzerzenie l. zesp.: spodziewana wartosc to (1-2i) ------" << z;
-
-  //wyniki sa poprawne, zostaly sprawdzone kalkulatorem wolfram alpha
-
-*/
+  return 0;
 }

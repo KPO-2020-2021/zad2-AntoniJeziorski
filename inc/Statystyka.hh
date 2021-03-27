@@ -20,7 +20,7 @@ struct Statystyka
 /*!
  * Funkcja wyswietlajaca wyniki statysytki
  */
-//void Wyswietlwynik(Statystyka wynik);
+
 ostream & operator << (ostream & StrmWy, Statystyka wynik);
 
 
