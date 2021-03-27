@@ -41,3 +41,13 @@ TEST_CASE("LZespolona - modul dla (0+1i)")
 
     CHECK(x.Modul2() == 1);
 }
+TEST_CASE("LZespolona - modul dla liczb zmiennoprzecinkowych")
+{
+    LZespolona x;
+
+    x.re = 6.34;
+    x.im = 7.85;
+
+    CHECK(x.Modul2() >= 10.09-0.01);
+}
+
