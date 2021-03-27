@@ -7,6 +7,7 @@ using namespace std;
  */
 
 LZespolona WyrazenieZesp::Oblicz() const 
+{
     LZespolona wynik;
     if(this->Op == 0) //jesli +
     {
