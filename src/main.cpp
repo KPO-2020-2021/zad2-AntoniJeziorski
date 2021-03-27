@@ -2,6 +2,7 @@
 #include <iomanip>
 #include "BazaTestu.hh"
 #include "Statystyka.hh"
+
 using namespace std;
 
 
@@ -35,8 +36,10 @@ int main(int argc, char **argv)
   int licznik = 1; // licznik pytan
   Statystyka ocena;
   ocena.Inicjalizuj(); // inicjacja strunktury statystyki
-  while (PobierzNastpnePytanie(&BazaT,&WyrZ_PytanieTestowe)) 
+  try
   {
+    while (PobierzNastpnePytanie(&BazaT,&WyrZ_PytanieTestowe)) 
+    {
     LZespolona wynik, odpowiedz; // zmienna wynik z policzonym wyrazeniem oraz zmienna odpowiedz do podawania odpowiedzi
     cout << "Zadanie " << licznik << ": ";
     cout << WyrZ_PytanieTestowe;
@@ -78,7 +81,15 @@ int main(int argc, char **argv)
       ocena.Dodaj_bledne(); // dodaj 1 do blednych odpowiedzi
     }
     licznik++; // zwieksz licznik pytan
+    }
   }
+  catch(runtime_error& e)
+  {
+    cerr << "Blad " << e.what() << '\n';
+    exit(1);
+  }
+  
+  
   cout << ocena;
 
 

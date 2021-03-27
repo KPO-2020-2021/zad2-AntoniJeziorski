@@ -80,12 +80,7 @@ void Wyswietl(WyrazenieZesp  WyrZ)
  * Funkcja zwraza modul liczby zespolonej
  */
 
-double LZespolona::Modul2() const
-{
-  double m;
-  m = sqrt((this->re * this->re) + (this->im * this->im));
-  return m;
-}
+
 
 /*!
  * Funkcja obliczajaca wyrazenie zespolone
@@ -212,8 +207,3 @@ istream & operator >> (istream & StrmWe, WyrazenieZesp & WyrZ)
     return StrmWe;
 }
 
-void LZespolona::Sprzezenie()
-{
-    if(this->im != 0)
-        this->im = -this->im; 
-}

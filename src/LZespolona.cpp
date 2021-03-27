@@ -1,6 +1,6 @@
 #include "LZespolona.hh"
 #include "WyrazenieZesp.hh"
-
+#define MIN_DIFF 0.01
 /*!
  * Realizuje dodanie dwoch liczb zespolonych.
  * Argumenty:
@@ -58,8 +58,7 @@ LZespolona  LZespolona::operator / (double  Skl2) const
   LZespolona Wynik;
   if(Skl2 == 0)
   {
-    cerr<<"Dzielnie przez 0 - blad"<<endl;
-    exit(1);
+    throw runtime_error("Dzielnie przez 0");
   }
   else
   {
@@ -81,8 +80,7 @@ LZespolona  LZespolona::operator / (LZespolona  Skl2) const
   LZespolona Wynik;
   if (Skl2.Modul2() == 0)
   {
-    cerr<<"Dzielenie przez 0 - blad "<<endl;
-    exit(1);
+    throw runtime_error("Dzielnie przez 0");
   }
   else
   {
@@ -97,7 +95,8 @@ LZespolona  LZespolona::operator / (LZespolona  Skl2) const
  */
 ostream & operator << ( ostream & StrmWy, LZespolona Lz )
 {
-  return StrmWy << '(' << Lz.re << showpos << Lz.im << noshowpos << 'i' << ')';
+  StrmWy.precision(2);
+  return StrmWy << '(' << std::fixed << Lz.re << showpos << Lz.im << noshowpos << 'i' << ')';
 }
 /*!
  * Realizuje wczytywanie liczby zespolonej podanej jako parametr
@@ -138,12 +137,23 @@ istream & operator >> ( istream & StrmWe, LZespolona& Lz )
   return StrmWe;
 }
 
-bool operator == (LZespolona Skl1, LZespolona Skl2)
+bool LZespolona::operator == (LZespolona Skl2) const
 {
-  if((Skl1.re == Skl2.re) && (Skl1.im == Skl2.im))
+  if((this->re >= Skl2.re - MIN_DIFF)&&(this->re <= Skl2.re + MIN_DIFF)&&(this->im >= Skl2.im - MIN_DIFF)&&(this->im <= Skl2.im + MIN_DIFF))
     return true;
   else 
     return false;
 }
 
+void LZespolona::Sprzezenie()
+{
+    if(this->im != 0)
+        this->im = -this->im; 
+}
 
+double LZespolona::Modul2() const
+{
+  double m;
+  m = sqrt((this->re * this->re) + (this->im * this->im));
+  return m;
+}
