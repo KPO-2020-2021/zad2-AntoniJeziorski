@@ -1,8 +1,9 @@
 #include "LZespolona.hh"
 #include "WyrazenieZesp.hh"
+#include <bits/stdc++.h>
 #define MIN_DIFF 0.01
 
-
+using namespace std;
 
 /*!
  * Realizuje operacje dodawania dwoch liczb zespolonych.
@@ -208,4 +209,54 @@ double LZespolona::Modul2() const
   double m;
   m = sqrt((this->re * this->re) + (this->im * this->im));
   return m;
+}
+
+/* Modyfikacje */
+
+/*!
+ * Realizuje przeciazenie operatora += dla LZespolonej
+ */
+
+
+LZespolona operator += (LZespolona &Arg1, LZespolona const &Arg2)
+{
+  Arg1 = Arg1 + Arg2;
+  return Arg1;
+}
+
+/*!
+ * Realizuje przeciazenie operatora /= dla liczby zespolonej
+ */
+
+LZespolona operator /= (LZespolona &Arg1, LZespolona const &Arg2)
+{
+  Arg1 = Arg1 / Arg2;
+  return Arg1;
+}
+
+/*!
+ * Wyswietla argument glowny liczby zespolonej
+ * PRE:
+ * Argumenty: LZespolona
+ * POST:
+ * Wyswietlenie argumentu glownego liczby zespolonej
+ */
+
+void arg(LZespolona z)
+{
+  double arg;
+  if(z.re == 0 && z.im == 0) // jesli liczba jest postaci 0+0i
+    throw runtime_error("Kat niezdefiniowany"); // pokaz blad
+  if(z.re > 0)
+    arg = atan2(z.im, z.re);
+  if(z.re < 0)
+    arg = atan2(z.im, z.re) + M_PI;
+  if(z.re == 0)
+  {
+    if(z.im > 0)
+      arg = M_PI/2;
+    if(z.im < 0)
+      arg = -M_PI/2;
+  }
+  cout << setprecision(2) << arg;
 }

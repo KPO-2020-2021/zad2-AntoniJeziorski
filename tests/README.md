@@ -15,3 +15,4 @@ test10 - WyrazenieZesp wczytywanie
 test11 - WyrazenieZesp wyświetlanie
 test12 - WyrazenieZesp obliczanie wyrażeń
 test13 - statystyka
+test14 - modyfikacje
