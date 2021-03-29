@@ -4,6 +4,10 @@ using namespace std;
 
 /*!
  * Oblicza wartosc wyrazenia zespolonego
+ * PRE:
+ * Wyrazenie zespolone ktore zostanie obliczone
+ * POST:
+ * Zwraca wynik rownania w postaci LZesp
  */
 
 LZespolona WyrazenieZesp::Oblicz() const 

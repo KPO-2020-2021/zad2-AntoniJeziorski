@@ -1,7 +1,7 @@
 # Projekt 2 - Arytmetyka liczb zespolonych
 
 ## Uruchamianie programu
-Program automatycznie uruchomi się po użyciu pliku Makefile.
+Program automatycznie uruchomi się po użyciu pliku Makefile w trybie latwy.
 Można również go uruchomić używając polecenia ./test_arytm_zesp [poziom trudności], gdzie poziom trudności może być łatwy lub trudny.
 
 ## Cel ćwiczenia

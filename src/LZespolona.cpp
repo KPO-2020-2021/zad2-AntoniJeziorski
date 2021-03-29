@@ -190,6 +190,10 @@ void LZespolona::Sprzezenie()
 
 /*!
  * Realizuje operacje wyliczenia modulu liczby zespolonej
+ * PRE:
+ * Liczba zespolona, z ktorej chcemy uzyskac modul
+ * POST:
+ * Modul liczby zespolonej w postaci double
  */
 
 double LZespolona::Modul2() const

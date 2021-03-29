@@ -9,20 +9,22 @@ using namespace std;
 int main(int argc, char **argv)
 {
 
-  if (argc < 2) {
+  if (argc < 2) // jesli nie podano przy wlacznaiu programu poziomu trudnosci
+  { 
     cout << endl;
     cout << " Brak opcji okreslajacej rodzaj testu." << endl;
     cout << " Dopuszczalne nazwy to:  latwy, trudny." << endl;
     cout << endl;
-    return 1;
+    return 1; // zakoncz program i zwroc 1
   }
 
 
-  BazaTestu   BazaT = { nullptr, 0, 0 };
+  BazaTestu   BazaT = { nullptr, 0, 0 }; // inicjalizacja struktury BazaTestu
 
-  if (InicjalizujTest(&BazaT,argv[1]) == false) {
+  if (InicjalizujTest(&BazaT,argv[1]) == false) // jesli inicjalizacja sie nie powiodla
+  {
     cerr << " Inicjalizacja testu nie powiodla sie." << endl;
-    return 1;
+    return 1; // zakoncz program i zwroc 1
   }
 
 
@@ -36,7 +38,7 @@ int main(int argc, char **argv)
   ocena.Inicjalizuj(); // inicjacja strunktury statystyki
   try
   {
-    while (PobierzNastpnePytanie(&BazaT,&WyrZ_PytanieTestowe)) 
+    while (PobierzNastpnePytanie(&BazaT,&WyrZ_PytanieTestowe)) // petla wczytujaca kolejne pytanie z bazy
     {
     LZespolona wynik, odpowiedz; // zmienna wynik z policzonym wyrazeniem oraz zmienna odpowiedz do podawania odpowiedzi
     cout << "Zadanie " << licznik << ": ";
@@ -87,8 +89,7 @@ int main(int argc, char **argv)
     exit(1);
   }
   
-  
-  cout << ocena;
+  cout << ocena; // wyswietl wynik
 
 
   return 0;
