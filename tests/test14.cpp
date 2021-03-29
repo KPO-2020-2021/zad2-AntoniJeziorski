@@ -101,3 +101,42 @@ TEST_CASE("Test arg dla liczby 0")
     WARN_THROWS(arg(x));
 }
 
+TEST_CASE("Test arg dla liczby z I cwiartki")
+{
+    LZespolona x = {3, 7};
+    double y = 1.16;
+
+    CHECK((arg(x)>= y - 0.01 && arg(x) <= y + 0.01));
+}
+
+TEST_CASE("Test arg dla liczby z II cwiartki")
+{
+    LZespolona x = {6, -2};
+    double y = -0.32;
+
+    CHECK((arg(x) >= y - 0.01 && arg(x) <= y + 0.01));
+}
+
+TEST_CASE("Test arg dla liczby z IV cwiartki")
+{
+    LZespolona x = {5, -3};
+    double y = -0.54;
+
+    CHECK((arg(x) >= y - 0.01 && arg(x) <= y + 0.01));
+}
+
+TEST_CASE("Test arg dla liczby z re = 0 i im > 0")
+{
+    LZespolona x = {0, 3};
+    double y = M_PI_2;
+
+    CHECK((arg(x) >= y - 0.01 && arg(x) <= y + 0.01));
+}
+
+TEST_CASE("Test arg dla liczby z re = 0 i im < 0")
+{
+    LZespolona x = {0, -3};
+    double y = -M_PI_2;
+
+    CHECK((arg(x) >= y - 0.01 && arg(x) <= y + 0.01));
+}

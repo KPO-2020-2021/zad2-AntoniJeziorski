@@ -34,5 +34,5 @@ ostream & operator << ( ostream & StrmWe, LZespolona Lz );
 istream & operator >> ( istream & StrmWe, LZespolona& Lz );
 LZespolona operator += (LZespolona &Arg1, LZespolona const &Arg2);
 LZespolona operator /= (LZespolona &Arg1, LZespolona const &Arg2);
-void arg(LZespolona z);
+double arg(LZespolona z);
 #endif

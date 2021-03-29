@@ -242,7 +242,7 @@ LZespolona operator /= (LZespolona &Arg1, LZespolona const &Arg2)
  * Wyswietlenie argumentu glownego liczby zespolonej
  */
 
-void arg(LZespolona z)
+double arg(LZespolona z)
 {
   double arg;
   if(z.re == 0 && z.im == 0) // jesli liczba jest postaci 0+0i
@@ -259,4 +259,5 @@ void arg(LZespolona z)
       arg = -M_PI/2;
   }
   cout << setprecision(2) << arg;
+  return arg;
 }
