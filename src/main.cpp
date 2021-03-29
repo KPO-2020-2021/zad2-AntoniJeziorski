@@ -36,7 +36,7 @@ int main(int argc, char **argv)
   int licznik = 1; // licznik pytan
   Statystyka ocena;
   ocena.Inicjalizuj(); // inicjacja strunktury statystyki
-  /*try
+  try
   {
     while (PobierzNastpnePytanie(&BazaT,&WyrZ_PytanieTestowe)) // petla wczytujaca kolejne pytanie z bazy
     {
@@ -89,11 +89,7 @@ int main(int argc, char **argv)
     exit(1);
   }
   
-  cout << ocena;*/ // wyswietl wynik
-
-  LZespolona x = {3,7};
-  arg(x);
-
+  cout << ocena; // wyswietl wynik
 
   return 0;
 }
