@@ -6,8 +6,10 @@
 
 /*!
  * Realizuje operacje dodawania dwoch liczb zespolonych.
+ * PRE:
  * Argumenty:
  *    Skl2 - drugi skladnik dodawania.
+ * POST:
  * Zwraca:
  *    Sume dwoch skladnikow, gdzie jednym jest liczba dla ktorej zostala wywolana metoda, a druga jest argumentem metody.
  */
@@ -23,8 +25,10 @@ LZespolona  LZespolona::operator + (LZespolona  Skl2) const
 
 /*!
  * Realizuje operacje odejmowania dwoch liczb zespolonych.
+ * PRE:
  * Argumenty:
  *    Skl2 - odjemnik.
+ * POST:
  * Zwraca:
  *    Roznice dwoch liczb zespolonych gdzie: odjemna to liczba dla ktorej zostala wywolana metoda, a odjemnik to argument.
  */
@@ -41,9 +45,10 @@ LZespolona  LZespolona::operator - (LZespolona  Skl2) const
 
 /*!
  * Realizuje operacje mnozenia dwoch liczb zespolonych.
+ * PRE:
  * Argumenty:
  *    Skl2 - drugi czynnik
- * Zwraca:
+ * POST:
  *    Iloczyn dwoch czynnikow gdzie: pierwszy do liczba dla ktorej zostala wywolana metoda, a drugi to parametr
  */
 
@@ -59,9 +64,10 @@ LZespolona  LZespolona::operator * (LZespolona  Skl2) const
 
 /*!
  * Realizuje dzielenie liczby zespolonej przez liczbe rzeczywista.
+ * PRE:
  * Argumenty:
  *    Skl2 - dzielnik.
- * Zwraca:
+ * POST:
  *    Iloraz liczby zespolonej oraz liczby rzeczywistej gdzie: dzielna to LZespolona dla ktorej zostala wywolana metoda, a dzielnik to argument
  */
 
@@ -84,9 +90,10 @@ LZespolona  LZespolona::operator / (double  Skl2) const
 
 /*!
  * Realizuje dzielenie dwoch liczb zespolonych.
+ * PRE:
  * Argumenty:
  *    Skl2 - dzielnik.
- * Zwraca:
+ * POST:
  *    Iloraz dwoch liczb zespolonych gdzie: dzielna to liczba dla ktorej zostala wywolana metoda, a dzielnik to argument
  */
 
@@ -114,7 +121,7 @@ LZespolona  LZespolona::operator / (LZespolona  Skl2) const
 
 ostream & operator << ( ostream & StrmWy, LZespolona Lz )
 {
-  StrmWy.precision(2);
+  StrmWy.precision(2); // ustawienie dokladnosci do dwoch miejsc po przecinku
   return StrmWy << '(' << std::fixed << Lz.re << showpos << Lz.im << noshowpos << 'i' << ')';
 }
 
