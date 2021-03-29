@@ -101,12 +101,3 @@ TEST_CASE("Test arg dla liczby 0")
     WARN_THROWS(arg(x));
 }
 
-TEST_CASE("Test arg dla liczby z I cwiartku ukladu")
-{
-    LZespolona x = {3, 7};
-
-    std::ostringstream cout;
-    arg(x);
-
-    CHECK(cout.str() == "1.2");
-}
